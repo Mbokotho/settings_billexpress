@@ -26,8 +26,8 @@ app.get('/', function(req, res) {
   const warning=Set.getWarningLevel();
   const critical=Set.getCriticalLevel();
 
-  const callTotal = Set.Sms_Total();
-  const smsTotal = Set.Call_Total();
+  const callTotal = Set.Call_Total()
+  const smsTotal = Set.Sms_Total();
   const grandTotal = Set.TTTotal();
 
   let color = Set.myColor();
