@@ -1,101 +1,118 @@
-
-module.exports = function(){
-  var criticallevel = 0;
-  var warningLevels= 0;
+module.exports =function(){
+  var criticalLevel = 0;
+  var warningLevel= 0;
   var callCost = 0;
   var smsCost = 0 ;
-
-  // var call_cost=0;
-  // var sms_cost =0;
 
   var sms = 0.0;
   var call = 0.0;
   var Total = 0.0;
-//
-//   if (grandTotal >= Set.criticalLevel(critical)){
-//           // adding the danger class will make the text red
-//           totalSettings.classList.add("danger");
-//
-//      }
-//       else if (grandTotal>=   Set.warningLevel(warning)){
-//          totalSettings.classList.add("warning");
-//       }
-//
-//        if (grandTotal <   Set.criticalLevel(critical)) {
-//          totalSettings.classList.remove("danger");
-//
-//        }
-//
-//        if (grandTotal < Set.warningLevel(warning)) {
-//         totalSettings.classList.remove("warning");
-//
-// }
+
+  let list = [];
+  let color = '';
 
 function Callprice(call_cost){
     callCost = parseFloat(call_cost);
+}
 
-return callCost;
+
+function getCall() {
+  return callCost;
 }
 
 function Smsprice(sms_cost){
   smsCost = parseFloat(sms_cost);
-
+}
+function getSms() {
   return smsCost;
 }
 
-function criticalLevel(critical_level){
+function criticalL(critical_level){
   criticalLevel = parseFloat(critical_level);
-  return criticalLevel;
+
+}
+
+function getCriticalLevel() {
+  return criticalLevel
+}
+
+function warningL(warning_level){
+  warningLevel = parseFloat(warning_level);
+}
+
+function getWarningLevel() {
+return warningLevel
 }
 
 
-function warningLevel(warning_level){
-  warningLevels = parseFloat(warning_level);
-    return warningLevels;
-}
+function Bill_Type(billType){
 
+  var billTypeEntered = billType;
+  let costPrice = 0;
 
+if (Total >= criticalLevel) {
 
-
-function Billtype(costType){
-
-  var billTypeEntered = costType;
-
-
+};
 
 if (billTypeEntered === "call"){
     call += callCost;
+    costPrice += callCost;
 }
 else if (billTypeEntered === "sms"){
     sms += smsCost;
+    costPrice += smsCost;
 }
 
-
-  return  Total = sms + call ;
-
+ list.push({
+   cost : costPrice,
+   type : billTypeEntered,
+   time : new Date
+ });
+ return Total = sms+call;
 }
 
-      function Calltotal(){
-        return call ;
-      }
+function actionsReturn(){
+  return list;
+}
 
-      function Smstotal(){
-        return sms;
-      }
+function Call_Total(){
+  return call ;
+}
 
-      function TTTotal(){
-        return Total;
-       }
+function Sms_Total(){
+  return sms;
+}
 
+function TTTotal(){
+  Total = call +sms ;
+  return Total;
+ }
+function myColor(){
+
+  if (Total >= criticalLevel) {
+    let color = 'danger'
+    return color;
+  }
+  if (Total >= warningLevel) {
+    let color = 'warning'
+    return color;
+  }
+}
        return {
-         Billtype,
-         Calltotal,
-         Smstotal,
+         Bill_Type,
+         Call_Total,
+         Sms_Total,
          TTTotal,
          Smsprice ,
          Callprice,
-         warningLevel,
-         criticalLevel
+         warningL,
+         criticalL,
+         getCall,
+         getSms,
+         getCriticalLevel,
+         getWarningLevel,
+         actionsReturn,
+         myColor
    }
 
 

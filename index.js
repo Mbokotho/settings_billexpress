@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const SettingsBill = require('./SettingsBill');
 const Set = SettingsBill();
+
 app.engine('handlebars', exphbs({
   defaultLayout: 'main'
 }));
@@ -14,60 +15,63 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(bodyParser.json());
+
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
 
-  res.render('home');
-});
 
-app.post('/settings', function(req, res) {
-  // let smsCost = req.body.smsCost;
-  // let callCost = req.body.callCost;
-  // let critical = req.body.criticalLevel;
-  // let warning = req.body.warningLevel;
+  const call=Set.getCall();
+  const sms=Set.getSms();
+  const warning=Set.getWarningLevel();
+  const critical=Set.getCriticalLevel();
 
+  const callTotal = Set.Sms_Total();
+  const smsTotal = Set.Call_Total();
+  const grandTotal = Set.TTTotal();
 
-  let { warning,callCost,smsCost,critical}=req.body
-
-  Set.Callprice(callCost);
-  Set.Smsprice(smsCost);
-  Set.criticalLevel(critical);
-  Set.warningLevel(warning);
+  let color = Set.myColor();
 
 
   res.render('home', {
-
+    call,
+    sms,
+    critical,
+    warning,
+    callTotal,
+    smsTotal,
+    grandTotal,
+    color
   });
-  // res.redirect('/');
-});
-
-app.post('/action', function(req, res) {
-
-
-let { warning,callCost,smsCost,critical}=req.body
-
-  Set.Billtype(req.body.costType);
-
-  let calls = Set.Calltotal();
-  let smses = Set.Smstotal();
-  let grandTotal = Set.TTTotal();
-
-
-
-  res.render('home', {
-    calls,
-    smses,
-    grandTotal
-  });
-
 
 });
 
+app.post('/settings', function(req, res){
+     const smsCost = req.body.smsCost;
+     const callCost = req.body.callCost;
+     const warningLevel = req.body.warningLevel;
+     const criticalLevel = req.body.criticalLevel;
 
+Set.Callprice(callCost);
+Set.Smsprice(smsCost);
+Set.warningL(warningLevel);
+Set. criticalL(criticalLevel);
+
+  res.redirect('/');
+});
+
+app.post('/action', function(req, res){
+  Set.Bill_Type(req.body.costType);
+  res.redirect('/')
+});
+
+app.get('/actions', function(req, res){
+
+  res.render('actions', {actions : Set.actionsReturn()});
+});
 
 let PORT = process.env.PORT || 3009;
 
-app.listen(PORT, function() {
+app.listen(PORT, function(){
   console.log('App starting on port', PORT);
 });
