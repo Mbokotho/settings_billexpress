@@ -76,7 +76,6 @@ app.post('/action', function(req, res){
 
 
 app.get('/actions', function(req, res){
-
 res.render('actions', {actions : Set.actions()});
 });
 

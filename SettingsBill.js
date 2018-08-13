@@ -51,8 +51,9 @@ function Bill_Type(billType){
   let costPrice = 0;
 
 if (Total >= criticalLevel) {
-
-};
+return;
+}
+else {
 
 if (billTypeEntered === "call"){
     call += callCost;
@@ -61,6 +62,7 @@ if (billTypeEntered === "call"){
 else if (billTypeEntered === "sms"){
     sms += smsCost;
     costPrice += smsCost;
+}
 }
 
 actionList.push({
