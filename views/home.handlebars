@@ -43,7 +43,7 @@
               </tr>
               <tr>
                 <td>
-                  <a href="/actions/call">Total</a>
+                  <a href="/actions">Total</a>
                 </td>
                 <td> R<span class="{{color}}">{{grandTotal}}</span></td>
               </tr>
@@ -55,13 +55,13 @@
         <h5>Settings</h5>
        <form class="" action="/settings" method="post">
           <label for="exampleEmailInput">Call Cost</label>
-          <input type="number" name="callCost" placeholder="enter call cost" value="{{call}}">
+          <input type="number" name="callCost" placeholder="e.g 2.75" value="{{call}}">
            <label for="exampleEmailInput">SMS Cost</label>
-           <input type="number" name="smsCost" placeholder="enter sms cost" value="{{sms}}">
+           <input type="number" name="smsCost" placeholder="e.g 0.75" value="{{sms}}">
            <label for="exampleEmailInput">WarningLevel</label>
-            <input type="number" name="warningLevel" placeholder="enter warning level" value="{{warning}}">
+            <input type="number" name="warningLevel" placeholder="e.g 20" value="{{warning}}">
            <label for="exampleEmailInput">CriticalLevel</label>
-           <input type="number" name="criticalLevel" placeholder="enter critical level" value="{{critical}}">
+           <input type="number" name="criticalLevel" placeholder="e.g 40" value="{{critical}}">
 
            <input type="submit">
        </form>

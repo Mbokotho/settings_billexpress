@@ -62,12 +62,17 @@ Set. criticalL(criticalLevel);
 
 app.post('/action', function(req, res){
   Set.Bill_Type(req.body.costType);
-  res.redirect('/')
+  res.redirect('/');
 });
+
 
 app.get('/actions', function(req, res){
 
-  res.render('actions', {actions : Set.actionsReturn()});
+res.render('actions', {actions : Set.actions()});
+});
+app.get('/actions/:billType', function(req, res){
+  let billAction = req.params.billType;
+  res.render('actions', {actions : Set.actionsFor(billAction)})
 });
 
 let PORT = process.env.PORT || 3009;

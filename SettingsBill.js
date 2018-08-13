@@ -1,14 +1,14 @@
 module.exports =function(){
-  var criticalLevel = 0;
-  var warningLevel= 0;
-  var callCost = 0;
-  var smsCost = 0 ;
+  var criticalLevel;
+  var warningLevel;
+  var callCost;
+  var smsCost;
 
   var sms = 0.0;
   var call = 0.0;
   var Total = 0.0;
 
-  let list = [];
+  let actionList = [];
   let color = '';
 
 function Callprice(call_cost){
@@ -62,18 +62,42 @@ else if (billTypeEntered === "sms"){
     sms += smsCost;
     costPrice += smsCost;
 }
+actionList.push({
+    type: billTypeEntered,
+    cost : costPrice,
+    timestamp: new Date()
+});
 
- list.push({
-   cost : costPrice,
-   type : billTypeEntered,
-   time : new Date
- });
  return Total = sms+call;
 }
 
-function actionsReturn(){
-  return list;
+
+
+
+// function recordAction(action) {
+//
+//     let cost = 0;
+//     if (action === 'sms'){
+//         cost = smsCost;
+//     }
+//     else if (action === 'call'){
+//         cost = callCost;
+//     }
+//
+//
+// }
+
+function actions(){
+    return actionList;
 }
+
+function actionsFor(billType){
+  return actionList.filter((bill) => bill.type === billType);
+}
+
+
+
+
 
 function Call_Total(){
   return call ;
@@ -87,6 +111,7 @@ function TTTotal(){
   Total = call +sms ;
   return Total;
  }
+
 function myColor(){
 
   if (Total >= criticalLevel) {
@@ -111,8 +136,9 @@ function myColor(){
          getSms,
          getCriticalLevel,
          getWarningLevel,
-         actionsReturn,
-         myColor
+         myColor,
+         actions,
+         actionsFor
    }
 
 
