@@ -62,6 +62,7 @@ else if (billTypeEntered === "sms"){
     sms += smsCost;
     costPrice += smsCost;
 }
+
 actionList.push({
     type: billTypeEntered,
     cost : costPrice,

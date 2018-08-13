@@ -3,11 +3,20 @@ const app = express();
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const SettingsBill = require('./SettingsBill');
+const moment = require('moment');
 const Set = SettingsBill();
 
 app.engine('handlebars', exphbs({
-  defaultLayout: 'main'
+  defaultLayout: 'main',
+  helpers:
+   {
+    "timestamp": function()
+    {
+      return moment(this.timestamp).fromNow();
+    }
+  }
 }));
+
 app.set('view engine', 'handlebars');
 
 
@@ -70,6 +79,8 @@ app.get('/actions', function(req, res){
 
 res.render('actions', {actions : Set.actions()});
 });
+
+
 app.get('/actions/:billType', function(req, res){
   let billAction = req.params.billType;
   res.render('actions', {actions : Set.actionsFor(billAction)})
