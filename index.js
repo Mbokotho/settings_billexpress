@@ -71,6 +71,7 @@ Set. criticalL(criticalLevel);
 
 app.post('/action', function(req, res){
   Set.Bill_Type(req.body.costType);
+  console.log(Set.Bill_Type(req.body.costType));
   res.redirect('/');
 });
 

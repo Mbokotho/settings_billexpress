@@ -1,4 +1,4 @@
-module.exports =function(){
+module.exports =function SettingBill(){
   var criticalLevel;
   var warningLevel;
   var callCost;
@@ -10,6 +10,7 @@ module.exports =function(){
 
   let actionList = [];
   let color = '';
+  let billType = '';
 
 function Callprice(call_cost){
     callCost = parseFloat(call_cost);
@@ -45,9 +46,9 @@ return warningLevel
 }
 
 
-function Bill_Type(billType){
+function Bill_Type(costType){
 
-  var billTypeEntered = billType;
+  var billTypeEntered = costType;
   let costPrice = 0;
 
 if (Total >= criticalLevel) {
@@ -63,6 +64,7 @@ else if (billTypeEntered === "sms"){
     sms += smsCost;
     costPrice += smsCost;
 }
+
 }
 
 actionList.push({
@@ -71,7 +73,7 @@ actionList.push({
     timestamp: new Date()
 });
 
- return Total = sms+call;
+ return costType;
 }
 
 
@@ -111,7 +113,7 @@ function Sms_Total(){
 }
 
 function TTTotal(){
-  Total = call +sms ;
+  Total = call + sms ;
   return Total;
  }
 
