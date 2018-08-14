@@ -1,22 +1,16 @@
-
 let assert = require("assert");
 let SettingsBill = require("../SettingsBill");
 
-
-
-
-
-
-escribe('Settings widget', function(){
+describe('Settings widget using ExpressJS', function(){
     it('should calculate total cost of phone calls made', function(){
-      var Set = SettingsBill();
+        var Set = SettingsBill();
 
 
-         Set.Callprice(2);
-      Set.Bill_Type('call');
-        Set.Bill_Type('call');
-          Set.Bill_Type('call');
-            Set.Bill_Type('call');
+Set.Callprice(2);
+Set.Bill_Type('call');
+Set.Bill_Type('call');
+Set.Bill_Type('call');
+Set.Bill_Type('call');
 
         assert.equal(Set.TTTotal(), 8);
 
@@ -25,7 +19,7 @@ escribe('Settings widget', function(){
 it('should calculate total cost of smses sent', function(){
   var Set =  SettingsBill()
 
-   Set.Smsprice(0.75);
+Set.Smsprice(0.75);
 Set.Bill_Type('sms');
 Set.Bill_Type('sms');
 
@@ -33,16 +27,16 @@ Set.Bill_Type('sms');
 });
 
 it('should calculate total cost of smses sent and calls made', function(){
-  var Set =  Setting()
+  var Set =  SettingsBill()
 
-   Set.Smsprice(0.75);
+Set.Smsprice(0.75);
 Set.Bill_Type('sms');
 Set.Bill_Type('sms');
 Set.Callprice(2);
 Set.Bill_Type('call');
 Set.Bill_Type('call');
- Set.Bill_Type('call');
-   Set.Bill_Type('call');
+Set.Bill_Type('call');
+Set.Bill_Type('call');
 
   assert.equal(Set.TTTotal(),9.5);
 });
