@@ -54,7 +54,7 @@ module.exports = function SettingBill() {
     let costPrice = 0;
 
     if (Total >= criticalLevel) {
-      return;
+      return ;
     } else {
 
       if (billTypeEntered === "call") {
@@ -121,6 +121,14 @@ module.exports = function SettingBill() {
       return color;
     }
   }
+function resetBtn() {
+
+     sms = 0.0;
+     call = 0.0;
+     Total = 0.0;
+
+}
+
   return {
     Bill_Type,
     Call_Total,
@@ -136,7 +144,8 @@ module.exports = function SettingBill() {
     getWarningLevel,
     myColor,
     actions,
-    actionsFor
+    actionsFor,
+    resetBtn
   }
 
 

@@ -87,7 +87,10 @@ app.post('/action', function(req, res){
 app.get('/actions', function(req, res){
 res.render('actions', {actions : Set.actions()});
 });
-
+app.post('/resetBtn', function(req, res){
+  Set.resetBtn();
+res.redirect('/');
+});
 
 app.get('/actions/:billType', function(req, res){
   let billAction = req.params.billType;

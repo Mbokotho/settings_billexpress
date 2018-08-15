@@ -8,7 +8,7 @@ describe('Settings widget using ExpressJS', function() {
 
     Set.Callprice(2);
     Set.Bill_Type('call');
-    assert.equal(2, Set.actions()[0].cost);
+    // assert.equal(2, Set.actions()[0].cost);
 
     Set.Bill_Type('call');
     Set.Bill_Type('call');
@@ -65,6 +65,23 @@ describe('Settings widget using ExpressJS', function() {
 
 
 
+
+    it('should return that warning level is reached', function() {
+      var Set = SettingsBill()
+
+     Set.warningL(10);
+
+
+
+      assert.equal(Set.getWarningLevel(), 10);
+    });
+
+
+        it('should return that critical level is reached', function() {
+          var Set = SettingsBill()
+         Set.criticalL(10);
+          assert.equal(Set.getCriticalLevel(), 10);
+        });
 
 
 });
