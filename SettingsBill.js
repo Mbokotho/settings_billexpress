@@ -19,7 +19,7 @@ module.exports = function SettingBill() {
 
 
   function getCall() {
-    return callCost;
+    return callCost
   }
 
   function Smsprice(sms_cost) {
@@ -76,18 +76,6 @@ module.exports = function SettingBill() {
     return costType;
   }
 
-  // function recordAction(action) {
-  //
-  //     let cost = 0;
-  //     if (action === 'sms'){
-  //         cost = smsCost;
-  //     }
-  //     else if (action === 'call'){
-  //         cost = callCost;
-  //     }
-  //
-  //
-  // }
 
   function actions() {
     return actionList;
@@ -98,16 +86,16 @@ module.exports = function SettingBill() {
   }
 
   function Call_Total() {
-    return call;
+    return call.toFixed(2);
   }
 
   function Sms_Total() {
-    return sms;
+    return sms.toFixed(2);
   }
 
   function TTTotal() {
     Total = call + sms;
-    return Total;
+    return Total.toFixed(2);
   }
 
   function myColor() {
@@ -123,9 +111,18 @@ module.exports = function SettingBill() {
   }
 function resetBtn() {
 
-     sms = 0.0;
-     call = 0.0;
-     Total = 0.0;
+     sms = 0;
+     call = 0;
+     Total = 0;
+     criticalLevel=0;
+     warningLevel=0;
+     callCost=0;
+      smsCost=0;
+
+     actionList = [];
+        color = '';
+         billType = '';
+         costPrice = 0;
 
 }
 
