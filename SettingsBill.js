@@ -100,11 +100,11 @@ module.exports = function SettingBill() {
 
   function myColor() {
 
-    if (Total >= criticalLevel) {
+    if (Total > criticalLevel) {
       let color = 'danger'
       return color;
     }
-    if (Total >= warningLevel) {
+    if (Total > warningLevel) {
       let color = 'warning'
       return color;
     }
@@ -114,10 +114,10 @@ function resetBtn() {
      sms = 0;
      call = 0;
      Total = 0;
-     criticalLevel;
-     warningLevel;
-     callCost;
-     smsCost;
+     criticalLevel=0;
+     warningLevel=0;
+     callCost=0;
+     smsCost=0;
 
      actionList = [];
      billType = '';
