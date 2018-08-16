@@ -114,15 +114,14 @@ function resetBtn() {
      sms = 0;
      call = 0;
      Total = 0;
-     criticalLevel=0;
-     warningLevel=0;
-     callCost=0;
-      smsCost=0;
+     criticalLevel= 0;
+     warningLevel= 0;
+     callCost= 0;
+     smsCost= 0;
 
      actionList = [];
-        color = '';
-         billType = '';
-         costPrice = 0;
+     billType = '';
+     costPrice = 0;
 
 }
 
